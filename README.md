@@ -22,3 +22,7 @@ Projeto em desenvolvimento - atualmente na etapa de criação de tabelas e consu
 
 ## Como visualizar
 Este projeto utiliza dados armazenados em buckets S3. As consultas podem ser executadas diretamente via Athena com os scripts em '/sql'. Os painéis do QuickSight porem ser visualizados na pasta '/dashboard', com prints dos resultados.
+
+## Soluções técnicas
+Durante a criação inicial das tabelas no Athena, houve um problema de leitura dos arquivos CSV: os nomes das colunas estavam sendo interpretados como parte dos dados, e não como cabeçalhos. Isso afetava diretamente a execução das queries SQL.
+A solução foi recriar as tabelas no Athena com os parâmetros corretos de leitura, como o uso de 'skip.header.line.cout = 1', para garantir que o Athena identificasse corretamente os nomes das colunas.
